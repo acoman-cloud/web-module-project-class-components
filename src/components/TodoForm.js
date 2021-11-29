@@ -17,7 +17,10 @@ class TodoForm extends React.Component {
 
   handleClick = (e)=> {
     e.preventDefault();
-	  console.log(this.state);
+	  this.props.handleAddItem(this.state.input);
+    this.state = {
+      value: ''
+    }
   }
 
 	render() {
@@ -25,7 +28,7 @@ class TodoForm extends React.Component {
 		<form>
 			<input onChange={this.handleChanges} type='text' name='todo' placeholder='...todo'/>
 			<button onClick={this.handleClick}>Add Todo</button>
-      <button >Clear Completed</button>
+      <button onClick={this.props.handleToggle}>Clear Completed</button>
 		</form>
 		)
 	}
